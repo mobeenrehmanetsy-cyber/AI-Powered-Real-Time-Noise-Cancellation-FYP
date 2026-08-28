@@ -46,7 +46,19 @@ Quick-test results validate the pipeline. They are not final performance results
 └── matlab/
 ```
 
-Large raw datasets and generated model files are intentionally not stored in GitHub. The notebook keeps raw audio in temporary Colab storage and saves important manifests, results, checkpoints, plots, model files, and MATLAB configuration files to Google Drive.
+## Data and artifact policy
+
+The repository is the source of truth for code and lightweight experiment data. The notebook should push or commit these items after a successful run:
+
+- source and classification manifests;
+- dataset versions, URLs, license notes, and checksums;
+- experiment configuration and preprocessing JSON;
+- training history, metrics, predictions, and evaluation tables;
+- small plots and the MATLAB integration configuration.
+
+Raw copies of LibriSpeech, MUSAN, DEMAND, DNS, WHAM/WHAMR, LibriMix, ESC-50, or SLR28 should not be pushed directly to GitHub. These datasets can be large, may have redistribution restrictions, and can exceed normal repository limits. Raw audio remains in temporary Colab storage or an approved dataset store such as Google Drive, institutional storage, Zenodo, or an object-storage bucket. The repository records exactly where it came from and how it was used, so another person can reproduce the download and verify the run.
+
+Generated checkpoints and large model files are also kept in the configured persistent artifact store unless Git LFS or an approved release-storage policy has been set up. Do not place GitHub access tokens in the notebook; use a private Colab secret or a local Git credential when synchronizing lightweight artifacts.
 
 ## Dataset sources
 
