@@ -1,0 +1,11 @@
+# The notebook installs these packages at runtime for a fresh Google Colab session.
+librosa
+soundfile
+pandas
+scikit-learn
+matplotlib
+seaborn
+requests
+tqdm
+pyyaml
+tf2onnx

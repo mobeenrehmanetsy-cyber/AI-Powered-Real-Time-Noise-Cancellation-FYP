@@ -1,0 +1,35 @@
+# Local Python and notebook state
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Local Colab-style working data and persistent runtime fallback
+fyp_local/
+FYP_drive/
+
+# Raw and generated audio/data files
+*.wav
+*.flac
+*.mp3
+*.tar.gz
+*.zip
+*.part
+
+# Generated experiment artifacts
+artifacts/**
+!artifacts/.gitkeep
+models/**
+checkpoints/**
+results/**
+plots/**
+exports/**
+matlab_integration/**
+metadata/**
+manifests/**
+
+# Local logs and editor files
+*.log
+.DS_Store
+.vscode/

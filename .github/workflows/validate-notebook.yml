@@ -1,0 +1,28 @@
+name: Validate notebook structure
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install notebook validator
+        run: python -m pip install nbformat
+      - name: Validate notebook JSON and cell types
+        run: |
+          python - <<'PY'
+          import nbformat
+          from pathlib import Path
+          path = Path('AI_Powered_Real_Time_Noise_Cancellation_FYP.ipynb')
+          notebook = nbformat.read(path, as_version=4)
+          assert notebook.cells, 'Notebook has no cells'
+          assert any(cell.cell_type == 'code' for cell in notebook.cells), 'Notebook has no code cells'
+          assert any(cell.cell_type == 'markdown' for cell in notebook.cells), 'Notebook has no Markdown cells'
+          print(f'PASS: {path} contains {len(notebook.cells)} valid cells')
+          PY
